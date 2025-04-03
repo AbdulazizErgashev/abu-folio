@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+body {
+  background: linear-gradient(90deg, #c6dfe9 0%, #87ceeb 100%);
+  font-family: "Oswald", sans-serif;
+}
+
+.bg-light {
+  background: linear-gradient(90deg, #c6dfe9 0%, #87ceeb 100%);
+}
+
+.bg-dark {
+  background: linear-gradient(90deg, #87ceeb 0%, #1e3a8a 100%);
+}
