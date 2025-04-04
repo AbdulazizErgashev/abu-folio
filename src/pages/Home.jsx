@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="min-h-screen container mx-auto px-5 flex flex-col md:flex-row md:justify-between items-center gap-10">
+    <div className="min-h-screen container mx-auto px-5 mb-20 md:mb-0 flex flex-col md:flex-row md:justify-between items-center gap-10">
       <motion.div
         className="flex flex-col items-start gap-5"
         initial={{ opacity: 0 }}
@@ -28,7 +28,7 @@ export default function Home() {
           Software Engineer
         </motion.h1>
         <motion.span
-          className="w-full sm:w-[20rem] md:w-[32rem] opacity-80"
+          className="w-full sm:w-[20rem] md:w-[32rem] opacity-80 text-gray-700"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
