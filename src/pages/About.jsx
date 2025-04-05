@@ -36,7 +36,7 @@ export default function About() {
         <h1 className="text-3xl text-[#87ceeb] font-semibold text-center mb-10">
           About Me
         </h1>
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
           <motion.div
             className="md:w-1/2 mb-8 md:mb-0"
             initial={{ opacity: 0, x: -100 }}
