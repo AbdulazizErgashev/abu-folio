@@ -1,5 +1,22 @@
 import { Code, Database, Server, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useInView } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+};
 
 export default function About() {
   const skills = [
@@ -25,24 +42,40 @@ export default function About() {
     },
   ];
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.3 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
+
   return (
-    <div className="min-h-screen flex items-center justify-center px-5 bg-white">
+    <div
+      id="about"
+      className="min-h-screen flex items-center justify-center px-5 bg-white"
+    >
       <motion.div
+        ref={ref}
         className="container mx-auto mt-10 md:mt-0"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        variants={fadeUp}
+        initial="hidden"
+        animate={controls}
       >
-        <h1 className="text-3xl text-[#87ceeb] font-semibold text-center mb-10">
+        <motion.h1
+          className="text-3xl text-[#87ceeb] font-semibold text-center mb-10"
+          variants={fadeUp}
+        >
           About Me
-        </h1>
+        </motion.h1>
+
         <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-          <motion.div
-            className="md:w-1/2 mb-8 md:mb-0"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          {/* Left section */}
+          <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={fadeLeft}>
             <p className="text-xl text-[#87ceeb] leading-relaxed mb-6">
               As a dedicated MERN Stack Developer, I specialize in crafting
               dynamic and scalable web applications using MongoDB, Express.js,
@@ -61,11 +94,10 @@ export default function About() {
             </p>
           </motion.div>
 
+          {/* Right section */}
           <motion.div
             className="md:w-1/2 grid grid-cols-2 gap-6"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={fadeRight}
           >
             {skills.map((skill, index) => (
               <div
