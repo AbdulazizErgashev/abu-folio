@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Portfolio() {
-  return <div>Socials</div>;
+  return <div id="portfolio">Socials</div>;
 }
