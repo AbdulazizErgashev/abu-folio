@@ -1,6 +1,7 @@
 import { ChevronDown, Github, Instagram, Mail } from "lucide-react";
 import me from "../assets/me.jpg";
 import { motion } from "framer-motion";
+import { useScroll } from "../context/ScrollContext";
 
 const fadeVariant = {
   hidden: { opacity: 0, y: 50 },
@@ -18,13 +19,13 @@ const icons = [
 ];
 
 export default function Home() {
-  const scrollToAbout = () => {
-    const section = document.getElementById("about");
-    if (section) section.scrollIntoView({ behavior: "smooth" });
-  };
+  const { scrollToPage } = useScroll();
 
   return (
-    <div className="min-h-screen container mx-auto px-5 mb-20 md:mb-0 flex flex-col md:flex-row md:justify-between items-center gap-10">
+    <div
+      id="home"
+      className="min-h-screen container mx-auto px-5 mb-20 md:mb-0 flex flex-col md:flex-row md:justify-between items-center gap-10"
+    >
       <motion.div
         className="flex flex-col items-start gap-5"
         initial="hidden"
@@ -79,7 +80,7 @@ export default function Home() {
         </motion.div>
 
         <motion.button
-          onClick={scrollToAbout}
+          onClick={() => scrollToPage("about")}
           className="flex items-center gap-1 bg-white py-3 px-6 rounded-xl font-semibold tracking-wide text-[#87ceeb] transition-all hover:scale-105 hover:bg-[#87ceeb] hover:text-white mt-6"
           custom={1}
           variants={fadeVariant}
