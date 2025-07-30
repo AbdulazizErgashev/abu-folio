@@ -57,7 +57,7 @@ export default function About() {
   return (
     <div
       id="about"
-      className="min-h-screen flex items-center justify-center px-5 bg-white"
+      className="min-h-screen flex items-center justify-center px-5 bg-white my-20 md:my-0 py-10 md:py-0"
     >
       <motion.div
         ref={ref}
