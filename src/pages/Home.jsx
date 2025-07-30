@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div
       id="home"
-      className="min-h-screen container mx-auto px-5 my-20 md:mb-0 flex flex-col md:flex-row md:justify-between items-center gap-10"
+      className="min-h-screen container mx-auto px-5 my-20 md:mb-0 md:my-0 flex flex-col md:flex-row md:justify-between items-center gap-10"
     >
       <motion.div
         className="flex flex-col items-start gap-5"
