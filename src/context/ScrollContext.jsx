@@ -4,7 +4,7 @@ export const ScrollContext = createContext();
 
 export const ScrollProvider = ({ children }) => {
   const scrollToPage = (id) => {
-    const section = document.getElementById(id);
+    const section = document.querySelector(`#${id}`);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
